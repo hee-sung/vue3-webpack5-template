@@ -30,7 +30,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: config.build.assetsRoot,
-    // publicPath: buildConfig.assetsPublicPath,
+    publicPath: buildConfig.assetsPublicPath,
     clean: true,
     chunkLoadingGlobal: 'chocolleto-react'
   },
@@ -135,7 +135,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", '.vue', '.json']
+    extensions: ['.js', '.vue', '.json']
   },
   optimization: {
     chunkIds: 'named'

@@ -1,6 +1,7 @@
 <template>
   <div>
     <vc-header></vc-header>
+    <router-view></router-view>
   </div>
 </template>
 
