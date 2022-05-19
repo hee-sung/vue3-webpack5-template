@@ -1,5 +1,8 @@
 <template>
-  <h2>UserId : {{id}}</h2>
+  <h2>UserId : {{ id }}</h2>
+  <div v-if="loaded">
+    {{ user }}
+  </div>
 </template>
 
 <script>
@@ -9,7 +12,9 @@
     data() {
       return {
         id: this.$route.params.id,
-        userApi: new UserApi()
+        userApi: new UserApi(),
+        loaded: false,
+        user: {}
       }
     },
     created() {
@@ -17,12 +22,17 @@
     },
     methods: {
       getUser(id) {
-        console.log('getUser');
+        this.loaded = false;
+
         this.userApi.getUser(id)
         .then((res) => {
-          console.warn('user : ', res);
+          this.loaded = true;
+          this.user = res.data;
         })
-        .catch((error) => {});
+        .catch((error) => {
+          console.error('error status : ', error.status)
+          console.error('error message : ', error.message)
+        });
       }
     }
   }

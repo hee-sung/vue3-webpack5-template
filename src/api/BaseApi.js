@@ -21,14 +21,14 @@ export class BaseApi {
   async callApi(method, url, data, options = {}) {
     options = this.makeOptions(method, url, data, options);
 
-    console.warn('options : ', options)
     return new Promise((resolve, reject) => {
       axios(options)
         .then((res) => {
           resolve(res);
         }).catch((error) => {
+          console.warn(error);
           if (error.status === 401 || (error.response && error.response.status === 401)) {
-            // 로그아웃 처리
+            // TODO : 로그아웃 처리
             reject(new AuthError(401, authErrorType.unauthorized));
           } else if (error.response) {
             const errorMessage = error.response.data.message || error.response.statusText;

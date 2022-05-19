@@ -1,5 +1,5 @@
 <template>
-  <h3>Vue3 Webpack5 template</h3>
+  <div class="vc-header"></div>
 </template>
 
 <script>
@@ -8,6 +8,6 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+@import "assets/scss/header"
 </style>
